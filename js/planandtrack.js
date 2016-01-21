@@ -45,7 +45,7 @@ function syncSettingsWithCalendar(settings) {
 }
 
 function loadSettingsFile(fileID) {
-	settingsID = filesID;
+	settingsID = fileID;
 	var request = gapi.client.drive.files.get({fileId: fileID,alt:"media"});
 	request.execute(function(resp) {
 		addSettingsToAngular(resp);
