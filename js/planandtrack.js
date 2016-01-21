@@ -55,7 +55,7 @@ function loadSettingsFile(fileID) {
 
 function saveSettings() {
 	var scope = angular.element(document.getElementById('contentCtrl')).scope();
-	var settings = sc.ope.calendarSettings;
+	var settings = scope.calendarSettings;
 	updateFileWithJSONContent(settingsID,'settings',JSON.stringify(settings),null);
 }
 
