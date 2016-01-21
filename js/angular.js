@@ -35,17 +35,6 @@ app.controller('CalendarCtrl', function($scope,$document) {
                 });
             }
         })
-        for (var key in $scope.calendarSettings.calendars) {
-            if ($scope.calendarSettings.calendars.hasOwnProperty(key)) {
-                var cal = $scope.calendarSettings.calendars[key];
-                if (cal.showCal) {
-                    eventSources.push({
-                        events: loadGcalOauth(key),
-                        color: cal.color
-                    });
-                }
-            }
-        }
         $('#calendar').fullCalendar({
             // put your options and callbacks here
             height: 650,
