@@ -86,7 +86,7 @@ var updateFileWithJSONContent = function(id, name, data, callback) {
 
     var request = gapi.client.request({
         'path': '/upload/drive/v3/files/'+id,
-        'method': 'POST',
+        'method': 'PATCH',
         'params': {'uploadType': 'multipart'},
         'headers': {
           'Content-Type': 'multipart/related; boundary="' + boundary + '"'
