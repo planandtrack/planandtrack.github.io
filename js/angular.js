@@ -27,6 +27,14 @@ app.controller('CalendarCtrl', function($scope,$document) {
 
     var renderCalendar = function() {
         var eventSources = [];
+        iterateObject($scope.calendarSettings.calendars, function(id,cal){
+            if (cal.showCal) {
+                eventSources.push({
+                    events: loadGcalOauth(id),
+                    color: cal.color
+                });
+            }
+        })
         for (var key in $scope.calendarSettings.calendars) {
             if ($scope.calendarSettings.calendars.hasOwnProperty(key)) {
                 var cal = $scope.calendarSettings.calendars[key];

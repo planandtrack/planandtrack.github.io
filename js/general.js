@@ -29,3 +29,11 @@ function deferUntilGDrive(method) {
     }
     setTimeout(function() { deferUntilGCal(method) }, 100);
 }
+
+function iterateObject(object,method) {
+    for (var key in object) {
+        if (object.hasOwnProperty(key)) {
+            method(key,object[key]);
+        }
+    }
+}

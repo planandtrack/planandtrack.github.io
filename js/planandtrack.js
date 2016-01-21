@@ -5,7 +5,6 @@ function loadSettings() {
 		var request = gapi.client.drive.files.list();
 		//var request = gapi.client.drive.files.list({spaces:'appDataFolder'});
 		request.execute(function(resp) {
-			console.log(resp);
 			var settingsID;
 			for (i = 0; i < resp.files.length; i++) {
 				if (resp.files[i].name === 'settings') {
@@ -27,7 +26,6 @@ function syncSettingsWithCalendar(settings) {
 	deferUntilGCal(function() {
 		var request = gapi.client.calendar.calendarList.list();
 		request.execute(function(resp) {
-			console.log(resp);
 			for (i = 0; i < resp.items.length;i++) {
 				var cal = resp.items[i];
 				if (settings.calendars[cal.id]==undefined) {
