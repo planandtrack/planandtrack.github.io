@@ -1,0 +1,37 @@
+body {
+    background-color: #c9cdc5;
+}
+
+
+input[type="checkbox"] + label span {
+    display:inline-block;
+    width:19px;
+    height:19px;
+    margin:-1px 4px 0 0;
+    vertical-align:middle;
+    cursor:pointer;
+}
+
+.checkbox-list-item {
+	width: 270px;
+	float: left;
+	white-space: nowrap;
+	display:inline-block;
+	overflow:hidden;
+	margin-right:20px;
+}
+
+.checkbox-list-item label {
+	white-space: nowrap;
+	width: 230px;
+	overflow:hidden;
+	text-overflow: ellipsis;
+	text-align:left;
+	margin-left:10px;
+}
+
+.checkbox-list:after {
+    content: "";
+    display: table;
+    clear: both;
+ }

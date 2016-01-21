@@ -1,0 +1,141 @@
+/*!
+ * Start Bootstrap - Simple Sidebar HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+
+#sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    width: 185px;
+    height: 100%;
+    margin-left: -201px;
+    overflow-y: auto;
+    background-color: #555;
+}
+
+/* Sidebar Styles */
+
+.sidebar-nav {
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-item {
+    text-indent: 20px;
+    line-height: 40px;
+    border-bottom: 1px solid;
+}
+
+.sidebar-item > a {
+    text-decoration: none;
+    display: block;
+    color: #ccc;
+}
+
+.sidebar-item > a:hover {
+    text-decoration: none;
+    background-color:#333;
+}
+
+.sidebar-item.active {
+    text-decoration: none;
+}
+.sidebar-item.active > a {
+    background-color:#376;
+}
+
+.sidebar-toggle-item > a:after {
+    font-family: 'Glyphicons Halflings';
+    content: "\e079";
+    float: right;
+    margin-right: 10px;
+}
+
+.sidebar-toggle-item.open:not(.active) > a:not(:hover) {
+    background-color: #444;
+}
+
+.sidebar-toggle-item.open > a:after {
+    content: "\e114";
+}
+
+.sidebar-submenu {
+    margin-top:5px;
+    margin-bottom:5px;
+    list-style: none;
+    padding-left: 0px;
+}
+
+.sidebar-submenu-item {
+    margin-top: 1px;
+    text-indent: 40px;
+    line-height: 30px;
+}
+
+.sidebar-submenu-item > a {
+    text-decoration: none;
+    display: block;
+    color: #ccc;
+}
+
+.sidebar-submenu-item > a:hover {
+    text-decoration: none;
+    background-color:#333;
+}
+
+.sidebar-submenu-item.active {
+    text-decoration: none;
+    background-color:#333;
+}
+
+/*
+.sidebar-nav li {
+    border-radius: 6px;
+    text-indent: 20px;
+    line-height: 40px;
+}
+
+.sidebar-nav li a {
+    border-radius: 6px;
+    display: block;
+    text-decoration: none;
+    color: #777;
+}
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+    background: #bbb;
+}
+
+.sidebar-nav li.active {
+    background: #bbb;
+    text-decoration: none;
+}
+*/
+.sidebar-item .sidebar-submenu{
+    display: none;
+}
+
+.sidebar-item.open .sidebar-submenu{
+    display: block;
+}
+
+.wide-container {
+    width: 1130px;
+    max-width: 1130px;
+}
+
+#center-sidebar {
+    padding: 0px;
+    margin: 0px 200px 0px 200px;
+}
+
+.header .text-muted {
+    line-height: 50px;
+}
+
+#headbar {
+    margin: 0px 200px 0px 200px;
+}

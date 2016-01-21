@@ -1,0 +1,16 @@
+<div class="jumbotron">
+<div class="checkbox-list">
+<div ng-repeat="(key,val) in calendarSettings.calendars">
+	<div class="checkbox-list-item">
+	  <input
+	  	id="plan-settings-{{key}}"
+	    type="checkbox"
+	    value="{{val.showCal}}"
+	    ng-model="val.showCal"
+	    class="pull-left"
+	  /> 
+	  <label for="plan-settings-{{key}}" class="pull-left"><span style="background-color:{{val.color}}"></span>{{val.name}}</label>
+  </div>
+</div>
+</div>
+</div>

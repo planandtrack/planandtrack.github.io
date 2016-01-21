@@ -1,0 +1,49 @@
+<div id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+        <li class="sidebar-item" ng-class="menuClass('')" ng-hide="isLoggedIn()">
+            <a href="#/">Home</a>
+        </li>
+        <li class="sidebar-item" ng-class="menuClass('secure/dashboard')" ng-show="isLoggedIn()">
+            <a href="#/secure/dashboard">Dashboard</a>
+        </li>
+        <li class="sidebar-item sidebar-toggle-item" ng-class="menuClassPrefix('secure/goals')" ng-show="isLoggedIn()">
+            <a toggle-parent="open">Goals</a>
+            <ul class="sidebar-submenu">
+                <li class="sidebar-submenu-item" ng-class="menuClass('secure/goals/general')">
+                    <a href="#/secure/goals/general">General</a>
+                </li>
+                <li class="sidebar-submenu-item" ng-class="menuClass('secure/goals/settings')">
+                    <a href="#/secure/goals/settings">Settings</a>
+                </li>
+            </ul>
+        </li>
+        <li class="sidebar-item sidebar-toggle-item"  ng-class="menuClassPrefix('secure/plan')" ng-show="isLoggedIn()">
+            <a toggle-parent="open">Plan</a>
+            <ul class="sidebar-submenu">
+                <li class="sidebar-submenu-item" ng-class="menuClass('secure/plan/general')">
+                    <a href="#/secure/plan/general">General</a>
+                </li>
+                <li class="sidebar-submenu-item" ng-class="menuClass('secure/plan/settings')">
+                    <a href="#/secure/plan/settings">Settings</a>
+                </li>
+            </ul>
+        </li>
+        <li class="sidebar-item sidebar-toggle-item" ng-class="menuClassPrefix('secure/track')" ng-show="isLoggedIn()">
+            <a toggle-parent="open">Track</a>
+            <ul class="sidebar-submenu">
+                <li class="sidebar-submenu-item" ng-class="menuClass('secure/track/general')">
+                    <a href="#/secure/track/general">General</a>
+                </li>
+                <li class="sidebar-submenu-item" ng-class="menuClass('secure/track/settings')">
+                    <a href="#/secure/track/settings">Settings</a>
+                </li>
+            </ul>
+        </li>
+        <li  class="sidebar-item" ng-class="menuClass('about')">
+            <a href="#/about">About</a>
+        </li>
+        <li  class="sidebar-item" ng-class="menuClass('contact')">
+            <a href="#/contact">Contact</a>
+        </li>
+    </ul>
+</div>
