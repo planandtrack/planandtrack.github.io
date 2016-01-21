@@ -32,7 +32,7 @@ app.controller('CalendarCtrl', function($scope,$document) {
                 var cal = $scope.calendarSettings.calendars[key];
                 if (cal.showCal) {
                     eventSources.push({
-                        events: loadGcalOauth(cal.id),
+                        events: loadGcalOauth(key),
                         color: cal.color
                     });
                 }
