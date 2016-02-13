@@ -28,6 +28,7 @@ app.controller('CalendarCtrl', function($scope,$document) {
     var renderCalendar = function() {
         var eventSources = [];
         iterateObject($scope.calendarSettings.calendars, function(id,cal){
+
             if (cal.showCal) {
                 eventSources.push({
                     events: loadGcalOauth(id),
@@ -55,11 +56,36 @@ app.controller('CalendarCtrl', function($scope,$document) {
                     eventLimit: false
                 },
                 agendaWeek: {
-                    titleFormat: 'DD.MM.YYYY'
+                    titleFormat: 'DD.MMMYYYY'
                 }
             },
             eventSources: eventSources,
-            defaultDate: defaultDate
+            defaultDate: defaultDate,
+            editable: true,
+            eventRender: function(event, element, view) { 
+                // Grab event data
+                var title = event.title;
+                element.qtip({
+                    content: {
+                        title: generateBubbleTitle(event),
+                        text: generateBubbleText(event,$scope.calendarSettings.calendars)
+                    },
+                    position: {
+                        target: 'mouse',
+                        my: "bottom center",
+                        adjust: {
+                            mouse: false,
+                            screen: true // Keep the tooltip within the viewport at all times
+                        }
+                    },
+                    show: 'click',
+                    hide: 'unfocus',
+                    style: {
+                        tip: true,
+                        classes: 'qtip-light'
+                    }
+                })
+            }
         })
     };
     $document.ready(deferUntilCalendar(renderCalendar));
