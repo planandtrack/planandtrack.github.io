@@ -1,8 +1,47 @@
 .bubble-title {
 	font-weight: bold;
 	font-size: 12px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 .title-form {
 	width: 100%;
+}
+
+.my-qtip-title {
+	height: 20px;
+}
+
+.bubble-time {
+	margin-top:5px;
+	margin-bottom:5px;
+}
+
+.bubble-time-edit {
+	display:table;
+}
+
+.bubble-date-time-picker {
+	width: 50%;
+	padding-right: 5px;
+	display:table-cell;
+}
+
+.bubble-date-time-picker-text {
+	font-weight: bolder;
+	padding-bottom: 5px;
+}
+
+.bubble-date-picker {
+	width: 60%;
+}
+.bubble-time-picker {
+	width: 35%;
+}
+
+.bubble-calendar {
+	margin-top:5px;
+	margin-bottom:5px;
 }
