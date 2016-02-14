@@ -12,6 +12,7 @@ app.config(function($routeProvider) {
                 return '/' + urlattr.name + '.html';
             },
         });
+        
 });
 
 app.controller('ButtonCtrl', function($scope) {
@@ -21,48 +22,88 @@ app.controller('ButtonCtrl', function($scope) {
         renderButton()
 });
 
-
 app.controller('CalendarCtrl', function($scope,$document) {
-        var renderCalendar = function() {
-            var defaultDate = "2016-01-10";
-            var eventSources = [];
-            iterateObject($scope.calendarSettings.calendars, function(id,cal){
-                if (cal.showCal) {
-                    eventSources.push({
-                        events: loadGcalOauth(id),
-                        color: cal.color
-                    });
+    var defaultDate = "2016-01-10";
+
+    var renderCalendar = function() {
+        var eventSources = [];
+        iterateObject($scope.calendarSettings.calendars, function(id,cal){
+
+            if (cal.showCal) {
+                eventSources.push({
+                    events: loadGcalOauth(id),
+                    color: cal.color
+                });
+            }
+        })
+        $('#calendar').fullCalendar({
+            // put your options and callbacks here
+            height: 650,
+            header: {
+                left: 'today prev,next',
+                center: 'title',
+                right: 'agendaDay,agendaWeek'
+            },
+            defaultView: 'agendaWeek',
+            //axisFormat: 'H:mm',
+           // timeFormat: 'H(:mm)',
+            //firstDay: 1,
+            lang: 'de',
+            fixedWeekCount: false,
+            eventLimit: true, // for all non-agenda views
+            views: {
+                agenda: {
+                    eventLimit: false
+                },
+                agendaWeek: {
+                    titleFormat: 'DD.MMMYYYY'
                 }
-            });
-            $('#calendar').fullCalendar({
-                // put your options and callbacks here
-                height: 650,
-                header: {
-                    left: 'today prev,next',
-                    center: 'title',
-                    right: 'agendaDay,agendaWeek'
-                },
-                defaultView: 'agendaWeek',
-                //axisFormat: 'H:mm',
-               // timeFormat: 'H(:mm)',
-                //firstDay: 1,
-                lang: 'de',
-                fixedWeekCount: false,
-                eventLimit: true, // for all non-agenda views
-                views: {
-                    agenda: {
-                        eventLimit: false
+            },
+            eventSources: eventSources,
+            defaultDate: defaultDate,
+            editable: true,
+            eventRender: function(event, element, view) {
+                console.log("blabla")
+                // Grab event data
+                var title = event.title;
+                element.qtip({
+                    content: {
+                        title: generateBubbleTitle(event),
+                        text: generateBubbleText(event,$scope.calendarSettings.calendars)
                     },
-                    agendaWeek: {
-                        titleFormat: 'DD.MM.YYYY'
+                    position: {
+                        target: 'mouse',
+                        my: "bottom center",
+                        adjust: {
+                            mouse: false,
+                            screen: true // Keep the tooltip within the viewport at all times
+                        }
+                    },
+                    show: 'click',
+                    hide: 'unfocus',
+                    style: {
+                        tip: true,
+                        classes: 'qtip-light'
+                    },
+                    events: {
+                        show: function() {
+                            $(this).find(".bubble-title").click(function() {
+                                $(this).hide()
+                                form=$(this).siblings(".title-form")
+                                $(form).val($(this).text())
+                                $(form).show()
+                            });
+                        },
+                        hide: function() {
+                            $(this).find(".bubble-title").show()
+                            $(this).find(".title-form").hide()
+                        }
                     }
-                },
-                eventSources: eventSources,
-                defaultDate: defaultDate
-            });
-        };
-        $document.ready(deferUntilCalendar(renderCalendar));
-       
+                })
+            }
+        })
+    };
+    $document.ready(deferUntilCalendar(renderCalendar));
 });
 
 app.controller('contentCtrl', function($scope, $location, $window) {
@@ -84,8 +125,9 @@ app.controller('contentCtrl', function($scope, $location, $window) {
             }
         }
         return false;
-    }    
+    }
     $scope.calendarSettings = {'calendars':{}};
+    
 }).directive('toggleParent', function() {
     return {
         restrict: 'A',
