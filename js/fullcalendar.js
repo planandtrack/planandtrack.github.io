@@ -1,7 +1,17 @@
 function generateBubbleTitle(event) {
 	var title = "<div class='bubble-title'>" + event.title + "</div>";
-	return title;
+	var form = "<input class='title-form' style='display:none'></input>"
+	return title + form;
 }
+
+$(document).ready(function() {
+	$(function(){
+	    $(".bubble-title").click(function() {
+	        console.log("title clicked")
+	        $(this).hide()
+	    });
+	});
+})
 
 function generateBubbleText(event, calendars) {
 	var start = event.start;
@@ -16,7 +26,9 @@ function generateBubbleText(event, calendars) {
         }
     }
 	var calendar = "<div class='bubble-calendar'> Calendar: "+ calName + "</div>";
-	return time + calendar;
+	var cancelButton = "<button class='cancelButton'>cancel</button>"
+	var saveButton = "<button class='saveButton pull-right'>save</button>"
+	return time + calendar + cancelButton + saveButton;
 }
 
 function formatTime(start,end) {

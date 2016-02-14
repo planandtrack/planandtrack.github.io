@@ -83,6 +83,20 @@ app.controller('CalendarCtrl', function($scope,$document) {
                     style: {
                         tip: true,
                         classes: 'qtip-light'
+                    },
+                    events: {
+                        show: function() {
+                            $(this).find(".bubble-title").click(function() {
+                                $(this).hide()
+                                form=$(this).siblings(".title-form")
+                                $(form).val($(this).text())
+                                $(form).show()
+                            });
+                        },
+                        hide: function() {
+                            $(this).find(".bubble-title").show()
+                            $(this).find(".title-form").hide()
+                        }
                     }
                 })
             }
