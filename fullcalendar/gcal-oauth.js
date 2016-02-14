@@ -1,5 +1,8 @@
 function loadGcalOauth(id) {
     return function(start, end, timezone, callback) {
+        if (start == null && end == null) {
+            return id;
+        }
         deferUntilGCal(function() {
             if (!start.hasZone()) {
               start = start.clone().utc().add(-1, 'day');
