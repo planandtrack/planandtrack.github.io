@@ -85,7 +85,17 @@ function getCalendar(date, calendars) {
                         	element.qtip('hide')
                         })
                     },
-                    hide: function() {
+                    hide: function(trigger,api) {
+                        var oEvent = trigger.originalEvent;
+                        // If we clicked something in the datepicker... don't hide!
+                        if(oEvent && ($(oEvent.target).closest('.ui-datepicker').length)) {
+                            trigger.preventDefault();
+                        }
+                        // If we clicked something in the timepicker... don't hide!
+                        if(oEvent && ($(oEvent.target).closest('.ui-timepicker-wrapper').length)) {
+                            trigger.preventDefault();
+                        }
+
                     	form=$(this).find(".title-form")
 						event.title=$(form).val()
 						$('#calendar').fullCalendar('updateEvent',event)
@@ -111,7 +121,13 @@ function generateDateTimePicker(date,outerClass,innerClass,text) {
 	$(outer).append("<div class='bubble-date-time-picker-text'>"+text+"</div>")
 	$(outer).append("<input class='bubble-date-picker " + innerClass + "' value='" + date.format("L") + "'></input")
 	$(outer).append("<input class='bubble-time-picker pull-right " + innerClass + "' value='" + date.format("LT") + "'></input")
-	$(outer).find('.bubble-date-picker').datepicker({dateFormat:"L"})
+    datepicker=$(outer).find('.bubble-date-picker')
+    $(datepicker).datepicker({dateFormat:"L"})
+    $(datepicker).click(function(){
+        console.log("clicked")
+        $(datepicker).datepicker('show');
+    });
+    $(outer).find('.bubble-time-picker').timepicker()
 	return outer
 }
 
