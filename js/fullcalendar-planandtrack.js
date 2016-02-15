@@ -116,16 +116,15 @@ function generateBubbleTitle(event) {
 	return titlediv;
 }
 
-function generateDateTimePicker(date,outerClass,innerClass,text) {
-	outer=$("<div class='bubble-date-time-picker " + outerClass + "'></div>")
+function generateDateTimePicker(date,text) {
+	outer=$("<div class='bubble-date-time-picker'></div>")
 	$(outer).append("<div class='bubble-date-time-picker-text'>"+text+"</div>")
-	$(outer).append("<input class='bubble-date-picker " + innerClass + "' value='" + date.format("L") + "'></input")
-	$(outer).append("<input class='bubble-time-picker pull-right " + innerClass + "' value='" + date.format("LT") + "'></input")
-    datepicker=$(outer).find('.bubble-date-picker')
-    $(datepicker).datepicker({dateFormat:"L"})
-    $(datepicker).click(function(){
-        console.log("clicked")
-        $(datepicker).datepicker('show');
+	$(outer).append("<input class='bubble-date-picker' value='" + date.format("L") + "'></input")
+	$(outer).append("<input class='bubble-time-picker pull-right' value='" + date.format("LT") + "'></input")
+    dateinput=$(outer).find('.bubble-date-picker')
+    $(dateinput).datepicker({dateFormat:"L"})
+    $(dateinput).click(function(){
+        $(this).datepicker('show');
     });
     $(outer).find('.bubble-time-picker').timepicker()
 	return outer
@@ -138,8 +137,8 @@ function generateBubbleText(event, qtip, calendars,calendarselector) {
 	timediv=$("<div class='bubble-time'></div>")
 	$(timediv).append("<div>" + formatTime(start,end) + "</div>")
 	editdiv=$("<div class='bubble-time-edit'></div>")
-	$(editdiv).append(generateDateTimePicker(start,"","from","From"))
-	$(editdiv).append(generateDateTimePicker(end,"","to","To"))
+	$(editdiv).append(generateDateTimePicker(start,"From"))
+	$(editdiv).append(generateDateTimePicker(end,"To"))
 	$(timediv).append(editdiv)
 	$(contentdiv).append(timediv)
 	var calId = event.source.events();
