@@ -1,0 +1,20 @@
+<input type="text" id="test" />
+
+<button onclick='doStuff()'>click</button>
+
+<link href='lib/css/jquery.timepicker.original.css' rel='stylesheet' />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.js" ></script>
+<script src="lib/js/jquery.timepicker.original.js" > </script>
+<script src="lib/js/moment.js"> </script>
+<script src='lib/js/fullcalendar.js'></script>
+<script src='lib/js/fullcalendar-de.js'></script>
+<script>
+    moment.locale("de")
+    $("#test").timepicker({
+        useSelect:true
+    })
+    function doStuff() {
+        $("#test").timepicker("setTime",moment("9:00","LT"))
+    }
+</script>
+            
