@@ -12,7 +12,6 @@ app.config(function($routeProvider) {
                 return '/' + urlattr.name + '.html';
             },
         });
-        
 });
 
 app.controller('ButtonCtrl', function($scope) {
@@ -27,7 +26,7 @@ app.controller('CalendarCtrl', function($scope,$document) {
     var renderCalendar = function() {
         $('#calendar').fullCalendar(getCalendar(date,$scope.calendarSettings.calendars))
     };
-    $document.ready(deferUntilCalendar(renderCalendar));
+    $(document).ready(deferUntilCalendar(renderCalendar));
 });
 
 app.controller('contentCtrl', function($scope, $location, $window) {
