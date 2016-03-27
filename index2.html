@@ -18,9 +18,9 @@ var letters = [["a","k"],["e","c"],["a","w"],["p","g"]];
 for (var i = 0; i < 16; i++) {
 	var str = "";
 	str += letters[0][i&1];
-	str += letters[1][(i&2)>>1];
-	str += letters[2][(i&4)>>2];
-	str += letters[3][i&8)>>3];
+	str += letters[1][( i & 2 ) >>> 1];
+	str += letters[2][( i & 4 ) >>> 2];
+	str += letters[3][( i & 8 ) >>> 3];
 	arr=permute(str);
 	for (var j = 0; j < 24; j++) {
 		$(#wrap).append("<div>" + arr[j] + "</div>");
