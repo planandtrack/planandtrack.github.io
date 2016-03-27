@@ -23,7 +23,7 @@ for (var i = 0; i < 16; i++) {
 	str += letters[3][( i & 8 ) >>> 3];
 	arr=permute(str);
 	for (var j = 0; j < 24; j++) {
-		$(#wrap).append("<div>" + arr[j] + "</div>");
+		$('#wrap').append("<div>" + arr[j] + "</div>");
 	}
 }
 
