@@ -17,7 +17,7 @@ var letters = [["a","k"],["e","c"],["a","w"],["p","g"]];
 var permArr = [], usedChars = [];
 for (var i = 0; i < 16; i++) {
 	var str = [,,,,];
-	str[0] = letters[1][( i & 1 ) >>> 0];
+	str[0] = letters[0][( i & 1 ) >>> 0];
 	str[1] = letters[1][( i & 2 ) >>> 1];
 	str[2] = letters[2][( i & 4 ) >>> 2];
 	str[3] = letters[3][( i & 8 ) >>> 3];
