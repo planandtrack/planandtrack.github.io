@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js" defer></script>
+
+    <title>Plan and Track - Web Interface</title>
+</head>
+<body>
+<div id="wrap"></div>
+<script>
+var letters = [["a","k"],["e","c"],["a","w"],["p","g"]];
+
+for (var i = 0; i < 16; i++) {
+	var str = "";
+	str += letters[0][i&1];
+	str += letters[1][(i&2)>>1];
+	str += letters[2][(i&4)>>2];
+	str += letters[3][i&8)>>3];
+	arr=permute(str);
+	for (var j = 0; j < 24; j++) {
+		$(#wrap).append("<div>" + arr[j] + "</div>");
+	}
+}
+
+
+function permute(input) {
+  var i, ch;
+  for (i = 0; i < input.length; i++) {
+    ch = input.splice(i, 1)[0];
+    usedChars.push(ch);
+    if (input.length == 0) {
+      permArr.push(usedChars.slice());
+    }
+    permute(input);
+    input.splice(i, 0, ch);
+    usedChars.pop();
+  }
+  return permArr
+};
+</script>
+</body>
